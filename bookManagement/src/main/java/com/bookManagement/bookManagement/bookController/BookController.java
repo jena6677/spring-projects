@@ -3,6 +3,7 @@ package com.bookManagement.bookManagement.bookController;
 import java.util.List;
 import java.lang.String;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -53,13 +54,18 @@ public class BookController {
 		return this.bookService.getBookByAuthorName(authorName);
 	}
 	
-	//update a book name
-	@PutMapping("/upadtebookname")
-	public String updateBookName(@RequestBody book book)
+	//update a book name or author name of a book or both
+	@PutMapping("/books/{bookId}")
+	public List<book> updateBookName(@RequestBody book book, @PathVariable("bookId") Long bookId)
 	{
-		return this.bookService.updateBookName(book);
+		return this.bookService.updateBookName(book, bookId);
 	}
-	//update author name
+	
 	//delete a book
+	@DeleteMapping("/books/{bookId}")
+	public List<book> deleteBook(@PathVariable("bookId") int bookId)
+	{
+		return this.bookService.deleteBook(bookId);
+	}
 	
 }

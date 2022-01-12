@@ -10,5 +10,6 @@ public interface BookService {
 	public String addBook(book newBook);
 	public book getBook(String boookName);
 	public List<book> getBookByAuthorName(String authorName);
-	public String updateBookName(book book);
+	public List<book> updateBookName(book book, Long bookId);
+	public List<book> deleteBook(int bookId);
 }

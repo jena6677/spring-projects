@@ -58,15 +58,51 @@ public class BoookServiceImpl implements BookService {
 	}
 
 	@Override
-	public String updateBookName(book book) {
+	public List<book> updateBookName(book book, Long bookId) {
+		List<book> list2 = new ArrayList<>();
+		
 		for(book bk : list)
 		{
-			if(bk.getBookId() == (Long)book.getBookId())
+			int l = bk.getBookId().intValue();
+			int l2 = bookId.intValue();
+			
+			if(l == l2)
 			{
-				list.re
+				bk.setName(book.getName());
+				list2.add(bk);
+			}
+			else
+			{
+				list2.add(bk);
 			}
 		}
-		return "Book name updated";
+		
+		list = list2;
+		
+		return list;
+	}
+
+	@Override
+	public List<book> deleteBook(int bookId) {
+		List<book> list2 = new ArrayList<>();
+		
+		for(book bk : list)
+		{
+			int l = bk.getBookId().intValue();
+			
+			if(l == bookId)
+			{
+				continue;
+			}
+			else
+			{
+				list2.add(bk);
+			}
+		}
+		
+		list = list2;
+		
+		return list;
 	}
 
 
