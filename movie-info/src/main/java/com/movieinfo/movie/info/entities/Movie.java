@@ -20,8 +20,7 @@ public class Movie {
 	private String genre;
 	private int yearOfRelease;
 	private String primaryLanguage;
-	@OneToMany(targetEntity=Movie.class, mappedBy="Movie", fetch=FetchType.EAGER)
-	private List<String> actorList;
+	private int actorList;
 	private int rating;
 	public int getMovieId() {
 		return movieId;
@@ -53,10 +52,10 @@ public class Movie {
 	public void setPrimaryLanguage(String primaryLanguage) {
 		this.primaryLanguage = primaryLanguage;
 	}
-	public List<String> getActorList() {
+	public int getActorList() {
 		return actorList;
 	}
-	public void setActorList(List<String> actorList) {
+	public void setActorList(int actorList) {
 		this.actorList = actorList;
 	}
 	public int getRating() {
@@ -76,7 +75,7 @@ public class Movie {
 				+ rating + "]";
 	}
 	public Movie(int movieId, String movieName, String genre, int yearOfRelease, String primaryLanguage,
-			List<String> actorList, int rating) {
+			int actorList, int rating) {
 		super();
 		this.movieId = movieId;
 		this.movieName = movieName;

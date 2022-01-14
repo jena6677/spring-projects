@@ -36,9 +36,9 @@ public class MovieController {
 	
 	//delete a movie
 	@DeleteMapping("/movies/{movieId}")
-	public String deleteMovie(@PathVariable int id)
+	public String deleteMovie(@PathVariable("movieId") int movieId)
 	{
-		return this.movieServices.deleteMovie(id);
+		return this.movieServices.deleteMovie(movieId);
 	}
 	
 	//get movies by genre
@@ -46,5 +46,12 @@ public class MovieController {
 	public List<Movie> getMovieByGenre(@PathVariable("genre") String genre)
 	{
 		return this.movieServices.getMovieByGenre(genre);
+	}
+	
+	//get all movies
+	@GetMapping("/movies")
+	public List<Movie> getMovies()
+	{
+		return this.movieServices.getAllMovies();
 	}
 }

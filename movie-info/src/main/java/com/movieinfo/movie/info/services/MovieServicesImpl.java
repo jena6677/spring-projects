@@ -50,6 +50,12 @@ public class MovieServicesImpl implements MovieServices {
 		}
 		return l2;
 	}
+
+	@Override
+	public List<Movie> getAllMovies() {
+		
+		return movieDao.findAll();
+	}
 	
 	
 	

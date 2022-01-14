@@ -10,4 +10,5 @@ public interface MovieServices {
 	public Movie updateMovie(Movie m);
 	public String deleteMovie(int movieId);
 	public List<Movie> getMovieByGenre(String genre);
+	public List<Movie> getAllMovies();
 }
