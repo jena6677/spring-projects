@@ -20,7 +20,7 @@ public class Movie {
 	private String genre;
 	private int yearOfRelease;
 	private String primaryLanguage;
-	private int actorList;
+	private String actorList;
 	private int rating;
 	public int getMovieId() {
 		return movieId;
@@ -52,10 +52,10 @@ public class Movie {
 	public void setPrimaryLanguage(String primaryLanguage) {
 		this.primaryLanguage = primaryLanguage;
 	}
-	public int getActorList() {
+	public String getActorList() {
 		return actorList;
 	}
-	public void setActorList(int actorList) {
+	public void setActorList(String actorList) {
 		this.actorList = actorList;
 	}
 	public int getRating() {
@@ -75,7 +75,7 @@ public class Movie {
 				+ rating + "]";
 	}
 	public Movie(int movieId, String movieName, String genre, int yearOfRelease, String primaryLanguage,
-			int actorList, int rating) {
+			String actorList, int rating) {
 		super();
 		this.movieId = movieId;
 		this.movieName = movieName;

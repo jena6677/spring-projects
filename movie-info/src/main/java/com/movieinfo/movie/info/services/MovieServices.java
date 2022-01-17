@@ -11,4 +11,5 @@ public interface MovieServices {
 	public String deleteMovie(int movieId);
 	public List<Movie> getMovieByGenre(String genre);
 	public List<Movie> getAllMovies();
+	public List<String> getAllActorsIdOfAMovie(int movieId);
 }

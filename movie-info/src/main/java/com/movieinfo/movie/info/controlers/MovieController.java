@@ -54,4 +54,10 @@ public class MovieController {
 	{
 		return this.movieServices.getAllMovies();
 	}
+	//get all actors of a movie
+	@GetMapping("/actors/{movieId}")
+	public List<String> getAllActorsOfAMovie(@PathVariable("movieId") int movieId)
+	{
+		return this.movieServices.getAllActorsIdOfAMovie(movieId);
+	}
 }

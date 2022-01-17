@@ -56,6 +56,20 @@ public class MovieServicesImpl implements MovieServices {
 		
 		return movieDao.findAll();
 	}
+
+	@Override
+	public List<String> getAllActorsIdOfAMovie(int movieId) {
+		String arr[] = movieDao.getById(movieId).getActorList().split(",");
+		List l1 = new ArrayList<>();
+		
+		for(String s : arr)
+		{
+			l1.add(s);
+		}
+		return l1;
+		
+	}
+
 	
 	
 	
