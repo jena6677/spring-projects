@@ -2,9 +2,13 @@ package com.movieinfo.movie.info.entities;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -15,18 +19,21 @@ import javax.persistence.Table;
 public class Movie {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int movieId;
 	private String movieName;
 	private String genre;
 	private int yearOfRelease;
 	private String primaryLanguage;
-	private String actorList;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@JoinColumn(name = "movie_Fkey", referencedColumnName = "movieId")
+	private List<Actor> actorList;
 	private int rating;
-	public int getMovieId() {
-		return movieId;
-	}
-	public void setMovieId(int movieId) {
-		this.movieId = movieId;
+	
+	public int getMovieId()
+	{
+		return this.movieId;
 	}
 	public String getMovieName() {
 		return movieName;
@@ -52,10 +59,10 @@ public class Movie {
 	public void setPrimaryLanguage(String primaryLanguage) {
 		this.primaryLanguage = primaryLanguage;
 	}
-	public String getActorList() {
+	public List<Actor> getActorList() {
 		return actorList;
 	}
-	public void setActorList(String actorList) {
+	public void setActorList(List<Actor> actorList) {
 		this.actorList = actorList;
 	}
 	public int getRating() {
@@ -74,10 +81,9 @@ public class Movie {
 				+ yearOfRelease + ", primaryLanguage=" + primaryLanguage + ", actorList=" + actorList + ", rating="
 				+ rating + "]";
 	}
-	public Movie(int movieId, String movieName, String genre, int yearOfRelease, String primaryLanguage,
-			String actorList, int rating) {
+	public Movie(String movieName, String genre, int yearOfRelease, String primaryLanguage,
+			List<Actor> actorList, int rating) {
 		super();
-		this.movieId = movieId;
 		this.movieName = movieName;
 		this.genre = genre;
 		this.yearOfRelease = yearOfRelease;

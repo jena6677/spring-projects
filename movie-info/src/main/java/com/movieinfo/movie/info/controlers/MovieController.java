@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.movieinfo.movie.info.entities.Actor;
 import com.movieinfo.movie.info.entities.Movie;
 import com.movieinfo.movie.info.services.MovieServices;
 
@@ -56,7 +57,7 @@ public class MovieController {
 	}
 	//get all actors of a movie
 	@GetMapping("/actors/{movieId}")
-	public List<String> getAllActorsOfAMovie(@PathVariable("movieId") int movieId)
+	public List<Actor> getAllActorsOfAMovie(@PathVariable("movieId") int movieId)
 	{
 		return this.movieServices.getAllActorsIdOfAMovie(movieId);
 	}

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.movieinfo.movie.info.dao.MovieDao;
+import com.movieinfo.movie.info.entities.Actor;
 import com.movieinfo.movie.info.entities.Movie;
 
 @Service
@@ -25,6 +26,8 @@ public class MovieServicesImpl implements MovieServices {
 	@Override
 	public Movie updateMovie(Movie m) {
 		
+		Movie m2 = movieDao.getById(m.getMovieId()); 
+		movieDao.delete(m2);
 		movieDao.save(m);
 		return m;
 	}
@@ -58,15 +61,8 @@ public class MovieServicesImpl implements MovieServices {
 	}
 
 	@Override
-	public List<String> getAllActorsIdOfAMovie(int movieId) {
-		String arr[] = movieDao.getById(movieId).getActorList().split(",");
-		List l1 = new ArrayList<>();
-		
-		for(String s : arr)
-		{
-			l1.add(s);
-		}
-		return l1;
+	public List<Actor> getAllActorsIdOfAMovie(int movieId) {
+		return movieDao.getById(movieId).getActorList();
 		
 	}
 
